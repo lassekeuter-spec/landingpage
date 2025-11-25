@@ -271,7 +271,7 @@
       background: rgba(15, 23, 42, 0.35);
     }
 
-    /* HERO RIGHT – CHAT DEMO */
+    /* HERO RIGHT – ECHTER BOT via iframe */
 
     .hero-right {
       display: flex;
@@ -293,151 +293,15 @@
       background: #ffffff;
       border: 1px solid rgba(15, 23, 42, 0.08);
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
       height: 380px;
-    }
-
-    .chat-demo-header {
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-      background: #ffffff;
-    }
-
-    .chat-demo-header-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .chat-demo-avatar {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 600;
-    }
-
-    .chat-demo-name {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .chat-demo-status {
-      font-size: 0.72rem;
-      color: #16a34a;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .chat-demo-status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #16a34a;
-      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.22);
-    }
-
-    .chat-demo-badge {
-      font-size: 0.7rem;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.12);
-      color: var(--muted);
-      background: #f9fafb;
-    }
-
-    .chat-demo-body {
-      padding: 12px 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 0.78rem;
-      background: #f9fafb;
-      flex: 1;
-    }
-
-    .chat-bubble-row {
       display: flex;
     }
 
-    .chat-bubble-row.bot {
-      justify-content: flex-start;
-    }
-
-    .chat-bubble-row.user {
-      justify-content: flex-end;
-    }
-
-    .chat-bubble {
-      max-width: 80%;
-      padding: 8px 10px;
-      border-radius: 12px;
-      line-height: 1.4;
-    }
-
-    .chat-bubble.bot {
-      background: #ffffff;
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      border-top-left-radius: 4px;
-      color: var(--muted);
-    }
-
-    .chat-bubble.bot strong {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .chat-bubble.user {
-      background: var(--accent);
-      color: #ffffff;
-      border-top-right-radius: 4px;
-      font-weight: 500;
-    }
-
-    .chat-demo-footer {
-      border-top: 1px solid rgba(15, 23, 42, 0.08);
-      background: #ffffff;
-      padding: 8px 8px 9px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .chat-demo-input {
-      flex: 1;
-      border-radius: 999px;
-      background: #f9fafb;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      padding: 6px 11px;
-      font-size: 0.76rem;
-      color: var(--muted);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    .chat-demo-send {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
+    .chat-frame {
+      width: 100%;
+      height: 100%;
       border: none;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      color: #ffffff;
+      display: block;
     }
 
     /* USE CASES */
@@ -672,64 +536,17 @@
           </div>
         </div>
 
-        <!-- CHAT-DEMO -->
+        <!-- ECHTER BOT IM IFRAME -->
         <div class="hero-right" id="demo">
           <div class="chat-demo-shell">
             <div class="chat-demo-inner">
-              <div class="chat-demo-header">
-                <div class="chat-demo-header-left">
-                  <div class="chat-demo-avatar">LK</div>
-                  <div>
-                    <div class="chat-demo-name">Lake.tech Demo-Bot</div>
-                    <div class="chat-demo-status">
-                      <span class="chat-demo-status-dot"></span> online
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-demo-badge">Demo</div>
-              </div>
-
-              <div class="chat-demo-body">
-                <div class="chat-bubble-row bot">
-                  <div class="chat-bubble bot">
-                    <strong>Willkommen 👋</strong><br />
-                    Ich bin der Demo-Assistent von Lake.tech. Wie kann ich Ihrer Praxis helfen?
-                  </div>
-                </div>
-
-                <div class="chat-bubble-row user">
-                  <div class="chat-bubble user">
-                    Ich möchte einen Termin für eine Vorsorgeuntersuchung anfragen.
-                  </div>
-                </div>
-
-                <div class="chat-bubble-row bot">
-                  <div class="chat-bubble bot">
-                    Sehr gern. In welcher Praxis sind Sie Patient&ast;in und welche Tage passen Ihnen
-                    grundsätzlich am besten?
-                  </div>
-                </div>
-
-                <div class="chat-bubble-row user">
-                  <div class="chat-bubble user">
-                    Hausarztpraxis Muster, am liebsten vormittags.
-                  </div>
-                </div>
-
-                <div class="chat-bubble-row bot">
-                  <div class="chat-bubble bot">
-                    Perfekt – ich nehme Ihre Anfrage auf und leite alles an das Praxisteam weiter.
-                    Sie erhalten Ihre Bestätigung wie gewohnt von der Praxis. ✅
-                  </div>
-                </div>
-              </div>
-
-              <div class="chat-demo-footer">
-                <div class="chat-demo-input">
-                  Schreiben Sie hier Ihre Frage an den Demo-Bot …
-                </div>
-                <button class="chat-demo-send">➤</button>
-              </div>
+              <!-- HIER die URL deines Bot-Deployments eintragen -->
+              <iframe
+                class="chat-frame"
+                src="https://laketechdemobot.vercel.app"
+                title="Lake.tech Demo-Bot"
+                scrolling="no"
+              ></iframe>
             </div>
           </div>
         </div>
@@ -833,7 +650,6 @@
           >
             <div style="font-weight:600;margin-bottom:2px;color:var(--accent);">Kontaktanfrage (Demo)</div>
 
-            <!-- Statisches Formular – noch ohne Backend -->
             <form>
               <div style="display:flex;flex-direction:column;gap:6px;">
                 <label>
