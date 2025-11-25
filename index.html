@@ -294,153 +294,16 @@
       background: #f9fafb;
       border: 1px solid rgba(15, 23, 42, 0.06);
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
       height: 420px;
+      padding: 0; /* wichtig für iframe */
     }
 
-    .chat-header {
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #ffffff;
-      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-    }
-
-    .chat-header-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .bot-avatar {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background: #0f172a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #ffffff;
-    }
-
-    .bot-name {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--accent);
-    }
-
-    .bot-status {
-      font-size: 0.72rem;
-      color: #16a34a;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #16a34a;
-      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
-    }
-
-    .chat-badge-demo {
-      font-size: 0.7rem;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      color: var(--muted);
-      background: #ffffff;
-    }
-
-    .chat-body {
-      padding: 10px 10px 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 0.78rem;
-      overflow-y: auto;
-    }
-
-    .msg-row {
-      display: flex;
-      margin-top: 2px;
-    }
-
-    .msg-row.bot {
-      justify-content: flex-start;
-    }
-
-    .msg-row.user {
-      justify-content: flex-end;
-    }
-
-    .msg {
-      max-width: 80%;
-      padding: 8px 10px;
-      border-radius: 12px;
-      line-height: 1.4;
-    }
-
-    .msg-bot {
-      background: #ffffff;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      border-top-left-radius: 4px;
-      color: var(--muted);
-    }
-
-    .msg-bot strong {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .msg-user {
-      background: var(--accent);
-      color: #ffffff;
-      border-top-right-radius: 4px;
-      font-weight: 500;
-    }
-
-    .chat-footer {
-      margin-top: auto;
-      padding: 8px 8px 9px;
-      border-top: 1px solid rgba(15, 23, 42, 0.06);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #f9fafb;
-    }
-
-    .input-shell {
-      flex: 1;
-      border-radius: 999px;
-      padding: 6px 12px;
-      background: #ffffff;
-      border: 1px solid rgba(15, 23, 42, 0.06);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 0.75rem;
-    }
-
-    .send-btn {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
+    /* NEU: iframe für Bot */
+    .bot-frame {
+      width: 100%;
+      height: 100%;
       border: none;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.9rem;
-      color: #ffffff;
+      display: block;
     }
 
     /* Use Cases */
@@ -630,9 +493,7 @@
       <header>
         <div class="brand">
           <div class="brand-logo">
-            <!-- Logo-pfad anpassen, falls nötig -->
             <img src="./lake.tech.png" alt="Lake.tech Logo">
-
           </div>
           <div class="brand-text">
             <div class="brand-name">Lake.tech</div>
@@ -696,65 +557,11 @@
         <div class="hero-right" id="demo">
           <div class="chat-shell">
             <div class="chat-window">
-              <div class="chat-header">
-                <div class="chat-header-left">
-                  <div class="bot-avatar">LK</div>
-                  <div>
-                    <div class="bot-name">Lake.tech Demo-Bot</div>
-                    <div class="bot-status">
-                      <span class="status-dot"></span> online
-                    </div>
-                  </div>
-                </div>
-                <div class="chat-badge-demo">Demo</div>
-              </div>
-
-              <div class="chat-body">
-                <div class="msg-row bot">
-                  <div class="msg msg-bot">
-                    <strong>Willkommen 👋</strong><br />
-                    Ich bin der <b>Demo-Assistent von Lake.tech</b>. Wie kann ich Ihrer
-                    Praxis heute helfen?
-                  </div>
-                </div>
-
-                <div class="msg-row user">
-                  <div class="msg msg-user">
-                    Ich möchte einen Termin für eine Vorsorgeuntersuchung vereinbaren.
-                  </div>
-                </div>
-
-                <div class="msg-row bot">
-                  <div class="msg msg-bot">
-                    Super, das übernehmen wir gern.<br /><br />
-                    In welcher Praxis sind Sie Patient&ast;in und welche Zeiträume passen
-                    Ihnen grundsätzlich?
-                  </div>
-                </div>
-
-                <div class="msg-row user">
-                  <div class="msg msg-user">
-                    Hausarztpraxis Muster in Köln, am liebsten vormittags.
-                  </div>
-                </div>
-
-                <div class="msg-row bot">
-                  <div class="msg msg-bot">
-                    Danke! Ich nehme Ihre Daten auf und leite alles an das Praxisteam
-                    weiter. Sie erhalten Ihre Terminbestätigung wie gewohnt von der
-                    Praxis. ✅
-                  </div>
-                </div>
-
-                <!-- HIER echten Bot einbinden (Script/iframe etc.), wenn vorhanden -->
-              </div>
-
-              <div class="chat-footer">
-                <div class="input-shell">
-                  Schreiben Sie Ihre Frage an den Demo-Bot …
-                </div>
-                <button class="send-btn">➤</button>
-              </div>
+              <iframe
+                class="bot-frame"
+                src="https://praxibot-v2.vercel.app"
+                title="Lake.tech Demo-Bot"
+              ></iframe>
             </div>
           </div>
         </div>
