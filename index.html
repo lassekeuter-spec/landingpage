@@ -49,7 +49,7 @@
       width: 100%;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 24px 16px 64px;
+      padding: 24px 16px 56px;
     }
 
     /* Header */
@@ -59,7 +59,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 8px 4px 24px;
+      padding: 8px 4px 20px;
     }
 
     .brand {
@@ -143,14 +143,20 @@
       box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.18);
     }
 
-    /* Hero WITHOUT CHAT DEMO */
+    /* Hero mit zwei Spalten */
 
     .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .hero-left {
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      margin-top: 24px;
-      max-width: 620px;
+      gap: 18px;
     }
 
     .hero-pill {
@@ -179,7 +185,7 @@
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      font-size: clamp(2.4rem, 3.8vw, 3.2rem);
       line-height: 1.05;
       font-weight: 650;
       color: var(--accent);
@@ -193,13 +199,19 @@
     }
 
     .hero-subtitle {
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--muted);
       max-width: 520px;
     }
 
+    .hero-subtitle b {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
     .hero-actions {
       display: flex;
+      flex-wrap: wrap;
       gap: 12px;
       margin-top: 4px;
     }
@@ -229,10 +241,95 @@
       cursor: pointer;
     }
 
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.3);
+    }
+
+    /* Hero rechte Seite – kompakte Karten */
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-self: stretch;
+    }
+
+    .hero-card {
+      flex: 1;
+      border-radius: var(--radius-xl);
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      box-shadow: var(--shadow-soft);
+      padding: 14px 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .hero-card-tag {
+      font-size: 0.7rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.04);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .hero-card-text {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-card-list {
+      margin-top: 4px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .hero-card-list li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
     /* Use Cases */
 
     .usecases {
-      margin-top: 72px;
+      margin-top: 44px;
     }
 
     .section-header {
@@ -244,7 +341,7 @@
     }
 
     .section-title {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: var(--accent);
     }
@@ -321,12 +418,19 @@
       background: #f9fafb;
     }
 
+    /* Kontakt */
+
+    /* Abstand etwas enger als vorher */
+    #kontakt {
+      margin-top: 48px;
+    }
+
     /* Footer */
 
     footer {
       border-top: 1px solid rgba(15, 23, 42, 0.06);
       padding: 14px 16px 20px;
-      margin-top: 60px;
+      margin-top: 44px;
       font-size: 0.78rem;
       color: var(--muted);
       background: #ffffff;
@@ -338,15 +442,58 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
     }
 
     .footer-links {
       display: flex;
+      flex-wrap: wrap;
       gap: 16px;
     }
 
     .footer-links a:hover {
       opacity: 1;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      header {
+        align-items: flex-start;
+      }
+
+      nav {
+        font-size: 0.8rem;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        padding: 18px 14px 40px;
+      }
+
+      .usecase-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -377,27 +524,74 @@
         </nav>
       </header>
 
-      <!-- HERO (OHNE DEMO) -->
-      <section class="hero">
-        <div class="hero-pill">
-          <span class="hero-pill-label">Neu</span>
-          <span>Individuelle KI-Assistenten</span>
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="hero-left">
+          <div class="hero-pill">
+            <span class="hero-pill-label">Neu</span>
+            <span>Individuelle KI-Assistenten</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="accent">Digitale Assistenten</span><br>
+            für Praxen &amp; Apotheken.
+          </h1>
+
+          <p class="hero-subtitle">
+            Lake.tech entwickelt <b>maßgeschneiderte KI-Bots</b>, die Routine-Anfragen
+            beantworten, Patienten vorqualifizieren und Ihr Team entlasten –
+            <b>vollautomatisiert und DSGVO-konform</b>.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#kontakt" class="btn-primary">Kostenloses Erstgespräch</a>
+            <a href="#usecases" class="btn-ghost">Mehr erfahren</a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span class="dot"></span> Speziell für Praxen &amp; Apotheken
+            </div>
+            <div class="hero-meta-item">
+              <span class="dot"></span> Hosting in der EU
+            </div>
+            <div class="hero-meta-item">
+              <span class="dot"></span> Einbindung in bestehende Websites
+            </div>
+          </div>
         </div>
 
-        <h1 class="hero-title">
-          <span class="accent">Digitale Assistenten</span><br>
-          für Praxen & Apotheken.
-        </h1>
+        <div class="hero-right">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div class="hero-card-title">Praxibot</div>
+              <div class="hero-card-tag">Praxis</div>
+            </div>
+            <p class="hero-card-text">
+              Digitaler Assistent für Haus- &amp; Facharztpraxen. Nimmt Anfragen entgegen,
+              klärt Standardfragen und entlastet das Telefon.
+            </p>
+            <ul class="hero-card-list">
+              <li>Termin- &amp; Rückrufwünsche aufnehmen</li>
+              <li>Infos zu Leistungen &amp; Öffnungszeiten</li>
+              <li>Übermittlung an das Praxisteam</li>
+            </ul>
+          </div>
 
-        <p class="hero-subtitle">
-          Lake.tech entwickelt <b>maßgeschneiderte KI-Bots</b>, die Routine-Anfragen
-          beantworten, Patienten vorqualifizieren und Ihr Team entlasten –
-          <b>vollautomatisiert und DSGVO-konform</b>.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#kontakt" class="btn-primary">Kostenloses Erstgespräch</a>
-          <a href="#usecases" class="btn-ghost">Mehr erfahren</a>
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <div class="hero-card-title">Apobot</div>
+              <div class="hero-card-tag">Apotheke</div>
+            </div>
+            <p class="hero-card-text">
+              Smarter Service-Bot für moderne Apotheken – als Vorfilter für Ihre Offizin.
+            </p>
+            <ul class="hero-card-list">
+              <li>Verfügbarkeit &amp; Reservierung anfragen</li>
+              <li>Öffnungszeiten &amp; Standortinfos</li>
+              <li>Mehr Service, weniger Wartezeit</li>
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -410,7 +604,7 @@
               KI-Assistenten für medizinische Einrichtungen – komplett individualisierbar.
             </p>
           </div>
-          <div class="pill-outline">Praxis & Apotheke</div>
+          <div class="pill-outline">Praxis &amp; Apotheke</div>
         </div>
 
         <div class="usecase-grid">
@@ -418,12 +612,13 @@
             <div class="usecase-label">Für Praxen</div>
             <h3 class="usecase-title">Praxibot</h3>
             <p class="usecase-text">
-              Beantwortet häufige Fragen, nimmt Terminanfragen entgegen und entlastet Ihr Telefon.
+              Beantwortet häufige Fragen, nimmt Terminanfragen entgegen und entlastet Ihr Team
+              gerade zu Stoßzeiten am Telefon.
             </p>
             <div class="usecase-meta">
               <div style="display:flex;align-items:center;gap:8px;">
                 <span class="usecase-dot"></span>
-                Ideal für Haus- & Facharztpraxen
+                Ideal für Haus- &amp; Facharztpraxen
               </div>
               <a class="usecase-link" href="#">Mehr erfahren</a>
             </div>
@@ -433,7 +628,8 @@
             <div class="usecase-label">Für Apotheken</div>
             <h3 class="usecase-title">Apobot</h3>
             <p class="usecase-text">
-              Unterstützt Kunden 24/7 bei Fragen zu Verfügbarkeit, Abholung & Öffnungszeiten.
+              Hilft Kund:innen bei Fragen zu Verfügbarkeit, Abholung und Öffnungszeiten,
+              ohne pharmazeutische Beratung zu ersetzen.
             </p>
             <div class="usecase-meta">
               <div style="display:flex;align-items:center;gap:8px;">
@@ -447,8 +643,8 @@
       </section>
 
       <!-- KONTAKT -->
-      <section id="kontakt" style="margin-top: 60px;">
-        <div class="section-header">
+      <section id="kontakt" style="margin-top: 48px;">
+        <div class="section-header" style="margin-bottom:14px;">
           <div>
             <h2 class="section-title">Unverbindliches Erstgespräch</h2>
             <p class="section-subtitle">
@@ -474,8 +670,8 @@
             <ol style="padding-left:18px;display:flex;flex-direction:column;gap:4px;">
               <li>Kurzvorstellung Ihrer Praxis / Apotheke</li>
               <li>Welche Anfragen sollen automatisiert werden?</li>
-              <li>Ton & Sprache des Assistenten festlegen</li>
-              <li>Integration & Datenschutz klären</li>
+              <li>Ton &amp; Sprache des Assistenten festlegen</li>
+              <li>Integration &amp; Datenschutz klären</li>
             </ol>
           </div>
 
