@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lake.tech – Automatisierte Kommunikation. Mehr Zeit für Menschen.</title>
+  <title>Lake.tech – Digitale Assistenten für Praxen & Apotheken</title>
 
   <style>
     :root {
       --bg: #f5f5f7;
       --bg-soft: #ffffff;
-      --card: #ffffff;
       --accent: #0f172a;
       --accent-soft: rgba(15, 23, 42, 0.06);
-      --border: rgba(15, 23, 42, 0.08);
+      --border: rgba(15, 23, 42, 0.12);
       --text: #111827;
       --muted: #6b7280;
-      --radius-xl: 24px;
+      --radius-xl: 26px;
       --radius-lg: 18px;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -49,17 +52,17 @@
       width: 100%;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 24px 16px 56px;
+      padding: 22px 16px 56px;
     }
 
-    /* Header */
+    /* HEADER */
 
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 8px 4px 20px;
+      gap: 18px;
+      padding: 4px 4px 18px;
     }
 
     .brand {
@@ -74,7 +77,7 @@
       border-radius: 999px;
       overflow: hidden;
       background: #ffffff;
-      border: 1px solid rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(15, 23, 42, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -107,32 +110,32 @@
       display: flex;
       align-items: center;
       gap: 18px;
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--muted);
     }
 
     .nav-link {
       padding: 6px 10px;
       border-radius: 999px;
-      transition: 0.18s ease;
+      transition: background 0.18s ease, color 0.18s ease;
     }
 
     .nav-link:hover {
-      background: rgba(15, 23, 42, 0.04);
+      background: rgba(15, 23, 42, 0.05);
       color: var(--accent);
     }
 
     .nav-cta {
       padding: 7px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.12);
+      border: 1px solid rgba(15, 23, 42, 0.16);
       display: flex;
       align-items: center;
       gap: 8px;
       font-size: 0.82rem;
       color: var(--accent);
       background: #ffffff;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
     }
 
     .nav-cta-dot {
@@ -143,14 +146,14 @@
       box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.18);
     }
 
-    /* Hero mit zwei Spalten */
+    /* HERO */
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.1fr);
       gap: 32px;
       align-items: center;
-      margin-top: 20px;
+      margin-top: 16px;
     }
 
     .hero-left {
@@ -165,7 +168,7 @@
       gap: 10px;
       padding: 4px 10px 4px 4px;
       border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.10);
       background: #ffffff;
       font-size: 0.8rem;
       color: var(--muted);
@@ -176,7 +179,7 @@
     .hero-pill-label {
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.06);
+      background: rgba(15, 23, 42, 0.08);
       color: var(--accent);
       font-size: 0.7rem;
       font-weight: 500;
@@ -185,8 +188,9 @@
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 3.8vw, 3.2rem);
-      line-height: 1.05;
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
       font-weight: 650;
       color: var(--accent);
     }
@@ -219,22 +223,26 @@
     .btn-primary {
       padding: 11px 18px;
       border-radius: 999px;
+      border: none;
       background: var(--accent);
       color: #ffffff;
       font-size: 0.92rem;
       font-weight: 600;
       cursor: pointer;
-      border: none;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
       box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
     }
 
+    .btn-primary span.icon {
+      font-size: 1rem;
+    }
+
     .btn-ghost {
       padding: 10px 15px;
       border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.12);
+      border: 1px solid rgba(15, 23, 42, 0.16);
       font-size: 0.9rem;
       color: var(--accent);
       background: transparent;
@@ -260,76 +268,182 @@
       width: 4px;
       height: 4px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.3);
+      background: rgba(15, 23, 42, 0.35);
     }
 
-    /* Hero rechte Seite – kompakte Karten */
+    /* HERO RIGHT – CHAT DEMO */
 
     .hero-right {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-self: stretch;
+      justify-content: center;
     }
 
-    .hero-card {
-      flex: 1;
+    .chat-demo-shell {
+      width: 100%;
+      max-width: 360px;
       border-radius: var(--radius-xl);
-      background: #ffffff;
-      border: 1px solid rgba(15, 23, 42, 0.06);
+      background: radial-gradient(circle at top left, #ffffff 0%, #f9fafb 40%, #f1f5f9 100%);
+      padding: 14px;
       box-shadow: var(--shadow-soft);
-      padding: 14px 16px 12px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .chat-demo-inner {
+      border-radius: 22px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      height: 380px;
     }
 
-    .hero-card-header {
+    .chat-demo-header {
+      padding: 10px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      background: #ffffff;
+    }
+
+    .chat-demo-header-left {
+      display: flex;
+      align-items: center;
       gap: 8px;
     }
 
-    .hero-card-tag {
-      font-size: 0.7rem;
-      padding: 4px 9px;
+    .chat-demo-avatar {
+      width: 26px;
+      height: 26px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.04);
-      color: var(--accent);
-      font-weight: 500;
+      background: var(--accent);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
     }
 
-    .hero-card-title {
-      font-size: 0.9rem;
+    .chat-demo-name {
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--accent);
     }
 
-    .hero-card-text {
-      font-size: 0.8rem;
-      color: var(--muted);
+    .chat-demo-status {
+      font-size: 0.72rem;
+      color: #16a34a;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .hero-card-list {
-      margin-top: 4px;
-      font-size: 0.78rem;
+    .chat-demo-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #16a34a;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.22);
+    }
+
+    .chat-demo-badge {
+      font-size: 0.7rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
       color: var(--muted);
-      list-style: none;
+      background: #f9fafb;
+    }
+
+    .chat-demo-body {
+      padding: 12px 10px;
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 8px;
+      font-size: 0.78rem;
+      background: #f9fafb;
+      flex: 1;
     }
 
-    .hero-card-list li::before {
-      content: "• ";
+    .chat-bubble-row {
+      display: flex;
+    }
+
+    .chat-bubble-row.bot {
+      justify-content: flex-start;
+    }
+
+    .chat-bubble-row.user {
+      justify-content: flex-end;
+    }
+
+    .chat-bubble {
+      max-width: 80%;
+      padding: 8px 10px;
+      border-radius: 12px;
+      line-height: 1.4;
+    }
+
+    .chat-bubble.bot {
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-top-left-radius: 4px;
+      color: var(--muted);
+    }
+
+    .chat-bubble.bot strong {
       color: var(--accent);
+      font-weight: 500;
     }
 
-    /* Use Cases */
+    .chat-bubble.user {
+      background: var(--accent);
+      color: #ffffff;
+      border-top-right-radius: 4px;
+      font-weight: 500;
+    }
+
+    .chat-demo-footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+      background: #ffffff;
+      padding: 8px 8px 9px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chat-demo-input {
+      flex: 1;
+      border-radius: 999px;
+      background: #f9fafb;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      padding: 6px 11px;
+      font-size: 0.76rem;
+      color: var(--muted);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .chat-demo-send {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+
+    /* USE CASES */
 
     .usecases {
-      margin-top: 44px;
+      margin-top: 42px;
     }
 
     .section-header {
@@ -354,7 +468,7 @@
     .pill-outline {
       padding: 5px 11px;
       border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.12);
       font-size: 0.78rem;
       color: var(--muted);
       background: #ffffff;
@@ -414,18 +528,17 @@
       font-size: 0.78rem;
       padding: 5px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.12);
       background: #f9fafb;
     }
 
-    /* Kontakt */
+    /* KONTAKT */
 
-    /* Abstand etwas enger als vorher */
     #kontakt {
-      margin-top: 48px;
+      margin-top: 46px;
     }
 
-    /* Footer */
+    /* FOOTER */
 
     footer {
       border-top: 1px solid rgba(15, 23, 42, 0.06);
@@ -448,14 +561,14 @@
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 14px;
     }
 
     .footer-links a:hover {
       opacity: 1;
     }
 
-    /* Responsive */
+    /* RESPONSIVE */
 
     @media (max-width: 880px) {
       .hero {
@@ -464,6 +577,7 @@
 
       .hero-right {
         order: -1;
+        margin-bottom: 10px;
       }
 
       header {
@@ -501,8 +615,7 @@
 <body>
   <div class="page">
     <main class="shell">
-
-      <!-- Header -->
+      <!-- HEADER -->
       <header>
         <div class="brand">
           <div class="brand-logo">
@@ -516,10 +629,10 @@
 
         <nav>
           <a href="#usecases" class="nav-link">Lösungen</a>
-          <a href="#kontakt" class="nav-link">Kontakt</a>
+          <a href="#demo" class="nav-link">Demo</a>
           <a href="#kontakt" class="nav-cta">
             <span class="nav-cta-dot"></span>
-            Erstgespräch
+            Kostenloses Erstgespräch
           </a>
         </nav>
       </header>
@@ -528,69 +641,96 @@
       <section class="hero" id="top">
         <div class="hero-left">
           <div class="hero-pill">
-            <span class="hero-pill-label">Neu</span>
-            <span>Individuelle KI-Assistenten</span>
+            <span class="hero-pill-label">Demo</span>
+            <span>Individuelle KI-Assistenten für Praxen &amp; Apotheken</span>
           </div>
 
           <h1 class="hero-title">
-            <span class="accent">Digitale Assistenten</span><br>
-            für Praxen &amp; Apotheken.
+            <span class="accent">Digitale Assistenten</span><br />
+            die rund um die Uhr für Ihre Patienten da sind.
           </h1>
 
           <p class="hero-subtitle">
-            Lake.tech entwickelt <b>maßgeschneiderte KI-Bots</b>, die Routine-Anfragen
-            beantworten, Patienten vorqualifizieren und Ihr Team entlasten –
-            <b>vollautomatisiert und DSGVO-konform</b>.
+            Lake.tech entwickelt <b>maßgeschneiderte KI-Bots</b>, die Routine-Anfragen beantworten,
+            Patienten vorqualifizieren und Ihr Team entlasten – <b>ohne</b> komplizierte Technik
+            auf Ihrer Seite.
           </p>
 
           <div class="hero-actions">
-            <a href="#kontakt" class="btn-primary">Kostenloses Erstgespräch</a>
-            <a href="#usecases" class="btn-ghost">Mehr erfahren</a>
+            <button class="btn-primary" onclick="document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });">
+              <span class="icon">●</span> Live-Demo starten
+            </button>
+            <button class="btn-ghost" onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });">
+              15-Minuten-Beratung buchen
+            </button>
           </div>
 
           <div class="hero-meta">
-            <div class="hero-meta-item">
-              <span class="dot"></span> Speziell für Praxen &amp; Apotheken
-            </div>
-            <div class="hero-meta-item">
-              <span class="dot"></span> Hosting in der EU
-            </div>
-            <div class="hero-meta-item">
-              <span class="dot"></span> Einbindung in bestehende Websites
-            </div>
+            <div class="hero-meta-item"><span class="dot"></span> Speziell für Praxen &amp; Apotheken</div>
+            <div class="hero-meta-item"><span class="dot"></span> DSGVO-konform in der EU gehostet</div>
+            <div class="hero-meta-item"><span class="dot"></span> Einbindung in Ihre bestehende Website</div>
           </div>
         </div>
 
-        <div class="hero-right">
-          <div class="hero-card">
-            <div class="hero-card-header">
-              <div class="hero-card-title">Praxibot</div>
-              <div class="hero-card-tag">Praxis</div>
-            </div>
-            <p class="hero-card-text">
-              Digitaler Assistent für Haus- &amp; Facharztpraxen. Nimmt Anfragen entgegen,
-              klärt Standardfragen und entlastet das Telefon.
-            </p>
-            <ul class="hero-card-list">
-              <li>Termin- &amp; Rückrufwünsche aufnehmen</li>
-              <li>Infos zu Leistungen &amp; Öffnungszeiten</li>
-              <li>Übermittlung an das Praxisteam</li>
-            </ul>
-          </div>
+        <!-- CHAT-DEMO -->
+        <div class="hero-right" id="demo">
+          <div class="chat-demo-shell">
+            <div class="chat-demo-inner">
+              <div class="chat-demo-header">
+                <div class="chat-demo-header-left">
+                  <div class="chat-demo-avatar">LK</div>
+                  <div>
+                    <div class="chat-demo-name">Lake.tech Demo-Bot</div>
+                    <div class="chat-demo-status">
+                      <span class="chat-demo-status-dot"></span> online
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-demo-badge">Demo</div>
+              </div>
 
-          <div class="hero-card">
-            <div class="hero-card-header">
-              <div class="hero-card-title">Apobot</div>
-              <div class="hero-card-tag">Apotheke</div>
+              <div class="chat-demo-body">
+                <div class="chat-bubble-row bot">
+                  <div class="chat-bubble bot">
+                    <strong>Willkommen 👋</strong><br />
+                    Ich bin der Demo-Assistent von Lake.tech. Wie kann ich Ihrer Praxis helfen?
+                  </div>
+                </div>
+
+                <div class="chat-bubble-row user">
+                  <div class="chat-bubble user">
+                    Ich möchte einen Termin für eine Vorsorgeuntersuchung anfragen.
+                  </div>
+                </div>
+
+                <div class="chat-bubble-row bot">
+                  <div class="chat-bubble bot">
+                    Sehr gern. In welcher Praxis sind Sie Patient&ast;in und welche Tage passen Ihnen
+                    grundsätzlich am besten?
+                  </div>
+                </div>
+
+                <div class="chat-bubble-row user">
+                  <div class="chat-bubble user">
+                    Hausarztpraxis Muster, am liebsten vormittags.
+                  </div>
+                </div>
+
+                <div class="chat-bubble-row bot">
+                  <div class="chat-bubble bot">
+                    Perfekt – ich nehme Ihre Anfrage auf und leite alles an das Praxisteam weiter.
+                    Sie erhalten Ihre Bestätigung wie gewohnt von der Praxis. ✅
+                  </div>
+                </div>
+              </div>
+
+              <div class="chat-demo-footer">
+                <div class="chat-demo-input">
+                  Schreiben Sie hier Ihre Frage an den Demo-Bot …
+                </div>
+                <button class="chat-demo-send">➤</button>
+              </div>
             </div>
-            <p class="hero-card-text">
-              Smarter Service-Bot für moderne Apotheken – als Vorfilter für Ihre Offizin.
-            </p>
-            <ul class="hero-card-list">
-              <li>Verfügbarkeit &amp; Reservierung anfragen</li>
-              <li>Öffnungszeiten &amp; Standortinfos</li>
-              <li>Mehr Service, weniger Wartezeit</li>
-            </ul>
           </div>
         </div>
       </section>
@@ -601,54 +741,54 @@
           <div>
             <h2 class="section-title">Direkt einsetzbar für Ihren Alltag</h2>
             <p class="section-subtitle">
-              KI-Assistenten für medizinische Einrichtungen – komplett individualisierbar.
+              Lake.tech-Bots werden an Ihre Praxis oder Apotheke angepasst – Inhalte, Tonalität
+              und Prozesse sind komplett individualisierbar.
             </p>
           </div>
-          <div class="pill-outline">Praxis &amp; Apotheke</div>
+          <div class="pill-outline">Praxibot &amp; Apobot</div>
         </div>
 
         <div class="usecase-grid">
           <article class="usecase-card">
             <div class="usecase-label">Für Praxen</div>
-            <h3 class="usecase-title">Praxibot</h3>
+            <h3 class="usecase-title">Praxibot – digitaler Praxisassistent</h3>
             <p class="usecase-text">
-              Beantwortet häufige Fragen, nimmt Terminanfragen entgegen und entlastet Ihr Team
-              gerade zu Stoßzeiten am Telefon.
+              Beantwortet wiederkehrende Fragen zu Öffnungszeiten, Leistungen oder
+              Rezeptbestellungen, nimmt Terminanfragen auf und entlastet Ihr Telefon –
+              besonders zu Stoßzeiten.
             </p>
             <div class="usecase-meta">
               <div style="display:flex;align-items:center;gap:8px;">
-                <span class="usecase-dot"></span>
-                Ideal für Haus- &amp; Facharztpraxen
+                <span class="usecase-dot"></span> Ideal für Haus- &amp; Facharztpraxen
               </div>
-              <a class="usecase-link" href="#">Mehr erfahren</a>
+              <a href="#kontakt" class="usecase-link">Praxibot kennenlernen</a>
             </div>
           </article>
 
           <article class="usecase-card">
             <div class="usecase-label">Für Apotheken</div>
-            <h3 class="usecase-title">Apobot</h3>
+            <h3 class="usecase-title">Apobot – smarter Apotheken-Chat</h3>
             <p class="usecase-text">
-              Hilft Kund:innen bei Fragen zu Verfügbarkeit, Abholung und Öffnungszeiten,
-              ohne pharmazeutische Beratung zu ersetzen.
+              Unterstützt bei Fragen zur Verfügbarkeit, Reservierung und Öffnungszeiten,
+              ohne pharmazeutische Beratung zu ersetzen – mehr Service, weniger Warteschlangen.
             </p>
             <div class="usecase-meta">
               <div style="display:flex;align-items:center;gap:8px;">
-                <span class="usecase-dot"></span>
-                Weniger Wartezeit – mehr Service
+                <span class="usecase-dot"></span> Für moderne Vor-Ort-Apotheken
               </div>
-              <a class="usecase-link" href="#">Mehr erfahren</a>
+              <a href="#kontakt" class="usecase-link">Apobot kennenlernen</a>
             </div>
           </article>
         </div>
       </section>
 
       <!-- KONTAKT -->
-      <section id="kontakt" style="margin-top: 48px;">
+      <section id="kontakt">
         <div class="section-header" style="margin-bottom:14px;">
           <div>
             <h2 class="section-title">Unverbindliches Erstgespräch</h2>
             <p class="section-subtitle">
-              In 15 Minuten klären wir, wie ein KI-Assistent Ihre Abläufe verbessern kann.
+              In 15 Minuten klären wir, wie ein KI-Assistent für Ihre Praxis oder Apotheke aussehen kann.
             </p>
           </div>
         </div>
@@ -658,74 +798,127 @@
             border-radius: var(--radius-xl);
             border: 1px solid var(--border);
             background: #ffffff;
-            padding: 20px 22px;
+            padding: 18px 20px;
             display: grid;
             grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-            gap: 22px;
+            gap: 20px;
             box-shadow: var(--shadow-soft);
           "
         >
           <div style="font-size:0.9rem;color:var(--muted);display:flex;flex-direction:column;gap:8px;">
-            <p><b style="color:var(--accent);">Ablauf:</b></p>
+            <p><b style="color:var(--accent);">So läuft unser Onboarding ab:</b></p>
             <ol style="padding-left:18px;display:flex;flex-direction:column;gap:4px;">
-              <li>Kurzvorstellung Ihrer Praxis / Apotheke</li>
-              <li>Welche Anfragen sollen automatisiert werden?</li>
+              <li>Kurzes Kennenlernen Ihrer Praxis oder Apotheke</li>
+              <li>Welche Anfragen sollen Bots beantworten? Welche nicht?</li>
               <li>Ton &amp; Sprache des Assistenten festlegen</li>
-              <li>Integration &amp; Datenschutz klären</li>
+              <li>Einbindung in Ihre Website &amp; Datenschutz klären</li>
             </ol>
+            <p style="font-size:0.82rem;margin-top:4px;">
+              Im Anschluss erhalten Sie eine <b style="color:var(--accent);">individuelle Demo</b>,
+              die exakt auf Ihr Team und Ihre Patienten zugeschnitten ist.
+            </p>
           </div>
 
           <div
             style="
               border-radius: 18px;
-              border: 1px solid rgba(15,23,42,0.08);
-              padding: 16px;
+              border: 1px solid rgba(15,23,42,0.10);
+              padding: 14px 14px 12px;
               background: #f9fafb;
               display:flex;
               flex-direction:column;
-              gap:10px;
+              gap:8px;
               font-size:0.82rem;
             "
           >
-            <div style="font-weight:600;color:var(--accent);">Kontaktformular</div>
+            <div style="font-weight:600;margin-bottom:2px;color:var(--accent);">Kontaktanfrage (Demo)</div>
 
+            <!-- Statisches Formular – noch ohne Backend -->
             <form>
-              <label>
-                Einrichtung<br>
-                <input type="text" placeholder="z.B. Hausarztpraxis Muster"
-                  style="width:100%;margin-top:3px;padding:6px 9px;border-radius:10px;border:1px solid rgba(15,23,42,0.12);background:#fff;">
-              </label>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <label>
+                  Praxis / Apotheke<br />
+                  <input
+                    type="text"
+                    name="company"
+                    placeholder="z.B. Hausarztpraxis Muster"
+                    style="
+                      width:100%;
+                      margin-top:3px;
+                      padding:6px 9px;
+                      border-radius:10px;
+                      border:1px solid rgba(15,23,42,0.16);
+                      background:#ffffff;
+                      font-size:0.8rem;
+                    "
+                  />
+                </label>
 
-              <label>
-                E-Mail<br>
-                <input type="email" placeholder="name@praxis.de"
-                  style="width:100%;margin-top:3px;padding:6px 9px;border-radius:10px;border:1px solid rgba(15,23,42,0.12);background:#fff;">
-              </label>
+                <label>
+                  E-Mail<br />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="name@praxis.de"
+                    style="
+                      width:100%;
+                      margin-top:3px;
+                      padding:6px 9px;
+                      border-radius:10px;
+                      border:1px solid rgba(15,23,42,0.16);
+                      background:#ffffff;
+                      font-size:0.8rem;
+                    "
+                  />
+                </label>
 
-              <label>
-                Bereich<br>
-                <select
-                  style="width:100%;margin-top:3px;padding:6px 9px;border-radius:10px;border:1px solid rgba(15,23,42,0.12);background:#fff;">
-                  <option value="">Bitte auswählen</option>
-                  <option value="praxis">Praxis</option>
-                  <option value="apotheke">Apotheke</option>
-                  <option value="beides">Beides</option>
-                </select>
-              </label>
+                <label>
+                  Bevorzugtes Einsatzgebiet<br />
+                  <select
+                    name="usecase"
+                    style="
+                      width:100%;
+                      margin-top:3px;
+                      padding:6px 9px;
+                      border-radius:10px;
+                      border:1px solid rgba(15,23,42,0.16);
+                      background:#ffffff;
+                      font-size:0.8rem;
+                    "
+                  >
+                    <option value="">Bitte auswählen</option>
+                    <option value="praxis">Praxis – Termin &amp; Anfragen</option>
+                    <option value="apotheke">Apotheke – Service &amp; Verfügbarkeit</option>
+                    <option value="beides">Beides</option>
+                  </select>
+                </label>
 
-              <button type="button"
-                style="margin-top:8px;padding:8px 12px;border-radius:999px;border:none;background:var(--accent);color:#fff;font-weight:600;cursor:not-allowed;">
-                Anfrage senden (Demo)
-              </button>
+                <button
+                  type="button"
+                  style="
+                    margin-top:6px;
+                    padding:8px 12px;
+                    border-radius:999px;
+                    border:none;
+                    background:var(--accent);
+                    color:#ffffff;
+                    font-weight:600;
+                    cursor:not-allowed;
+                    font-size:0.8rem;
+                  "
+                >
+                  Anfrage absenden (Demo)
+                </button>
 
-              <p style="font-size:0.72rem;color:var(--muted);">
-                Dieses Formular ist eine Demo. Wir richten die echte Version für Ihre Einrichtung ein.
-              </p>
+                <p style="font-size:0.72rem;color:var(--muted);">
+                  Dieses Formular ist eine <b>statische Demo</b>. Wir richten die echte Version
+                  im Rahmen des Onboardings gemeinsam ein.
+                </p>
+              </div>
             </form>
           </div>
         </div>
       </section>
-
     </main>
 
     <!-- FOOTER -->
