@@ -4,754 +4,788 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lake.tech – Digitale Assistenten für Praxen & Apotheken</title>
-
   <style>
-    :root {
-      --bg: #f5f5f7;
-      --bg-soft: #ffffff;
-      --accent: #0f172a;
-      --accent-soft: rgba(15, 23, 42, 0.06);
-      --border: rgba(15, 23, 42, 0.12);
-      --text: #111827;
-      --muted: #6b7280;
-      --radius-xl: 26px;
-      --radius-lg: 18px;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --bg: #f4f5fb;
+      --bg-soft: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #6b7280;
+      --accent: #111827;
+      --accent-soft: #e5f3ff;
+      --accent-green: #00c853;
+      --radius-lg: 24px;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top left, #eef2ff 0, #f4f5fb 36%, #f8fafc 100%);
+      color: var(--text-main);
+      line-height: 1.6;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .shell {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 22px 16px 56px;
-    }
-
-    /* HEADER */
 
     header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(244, 245, 251, 0.9);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      padding: 4px 4px 18px;
     }
 
-    .brand {
+    .nav-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 0.75rem;
     }
 
-    .brand-logo {
-      width: 52px;
-      height: 52px;
+    .logo-mark {
+      width: 32px;
+      height: 32px;
       border-radius: 999px;
-      overflow: hidden;
-      background: #ffffff;
-      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: #111827;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 700;
     }
 
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .brand-text {
+    .logo-text {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      font-size: 0.85rem;
     }
 
-    .brand-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .brand-tagline {
+    .logo-text strong {
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       font-size: 0.8rem;
-      color: var(--muted);
     }
 
-    nav {
+    .logo-text span {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .nav-links {
       display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
       align-items: center;
-      gap: 18px;
-      font-size: 0.86rem;
-      color: var(--muted);
     }
 
-    .nav-link {
-      padding: 6px 10px;
-      border-radius: 999px;
-      transition: background 0.18s ease, color 0.18s ease;
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
     }
 
-    .nav-link:hover {
-      background: rgba(15, 23, 42, 0.05);
-      color: var(--accent);
+    .nav-links a:hover {
+      color: var(--text-main);
     }
 
     .nav-cta {
-      padding: 7px 14px;
+      padding: 0.55rem 1.1rem;
       border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.16);
+      border: none;
+      background: #ecfdf5;
+      font-size: 0.85rem;
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      color: var(--accent);
-      background: #ffffff;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+      gap: 0.4rem;
+      cursor: pointer;
     }
 
     .nav-cta-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 999px;
-      background: #16a34a;
-      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.18);
+      background: #22c55e;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3.5rem;
     }
 
     /* HERO */
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.1fr);
-      gap: 32px;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 2.5rem;
       align-items: center;
-      margin-top: 16px;
+      margin-bottom: 3rem;
     }
 
-    .hero-left {
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .eyebrow-row {
       display: flex;
-      flex-direction: column;
-      gap: 18px;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      align-items: center;
     }
 
-    .hero-pill {
+    .pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 4px 10px 4px 4px;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      background: #ffffff;
-      font-size: 0.8rem;
-      color: var(--muted);
-      width: fit-content;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.8);
     }
 
-    .hero-pill-label {
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.08);
-      color: var(--accent);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+    .pill-demo {
+      background: #111827;
+      border-color: #111827;
+      color: white;
+      font-size: 0.72rem;
       text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
-    .hero-title {
-      font-size: clamp(2.4rem, 4vw, 3.2rem);
-      line-height: 1.04;
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 4vw, 3rem);
       letter-spacing: -0.04em;
-      font-weight: 650;
-      color: var(--accent);
+      margin-bottom: 0.85rem;
     }
 
-    .hero-title span.accent {
-      background: linear-gradient(120deg, #0f172a 0%, #1f2937 40%, #020617 90%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .hero h1 span {
+      display: block;
+      font-size: 0.8em;
+      color: var(--text-muted);
+      letter-spacing: 0;
+      margin-bottom: 0.3rem;
     }
 
-    .hero-subtitle {
-      font-size: 0.98rem;
-      color: var(--muted);
-      max-width: 520px;
+    .hero-sub {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+      margin-bottom: 1.3rem;
     }
 
-    .hero-subtitle b {
-      color: var(--accent);
-      font-weight: 500;
+    .hero-sub strong {
+      color: #111827;
     }
 
-    .hero-actions {
+    .chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 4px;
-    }
-
-    .btn-primary {
-      padding: 11px 18px;
-      border-radius: 999px;
-      border: none;
-      background: var(--accent);
-      color: #ffffff;
-      font-size: 0.92rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
-    }
-
-    .btn-primary span.icon {
-      font-size: 1rem;
-    }
-
-    .btn-ghost {
-      padding: 10px 15px;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.16);
-      font-size: 0.9rem;
-      color: var(--accent);
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 12px;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
       font-size: 0.8rem;
-      color: var(--muted);
     }
 
-    .hero-meta-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .dot {
-      width: 4px;
-      height: 4px;
+    .chip {
+      padding: 0.35rem 0.8rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.35);
-    }
-
-    /* HERO RIGHT – ECHTER BOT via iframe */
-
-    .hero-right {
-      display: flex;
-      justify-content: center;
-    }
-
-    .chat-demo-shell {
-      width: 100%;
-      max-width: 360px;
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top left, #ffffff 0%, #f9fafb 40%, #f1f5f9 100%);
-      padding: 14px;
-      box-shadow: var(--shadow-soft);
+      background: rgba(255, 255, 255, 0.9);
       border: 1px solid rgba(15, 23, 42, 0.06);
     }
 
-    .chat-demo-inner {
-      border-radius: 22px;
-      background: #ffffff;
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      overflow: hidden;
-      height: 380px;
+    .cta-row {
       display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.55rem;
     }
 
-    .chat-frame {
-      width: 100%;
-      height: 100%;
+    .btn-primary {
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
       border: none;
-      display: block;
+      background: #111827;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
     }
 
-    /* USE CASES */
-
-    .usecases {
-      margin-top: 42px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .section-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .section-subtitle {
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .pill-outline {
-      padding: 5px 11px;
+    .btn-secondary {
+      padding: 0.75rem 1.4rem;
       border-radius: 999px;
       border: 1px solid rgba(15, 23, 42, 0.12);
-      font-size: 0.78rem;
-      color: var(--muted);
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      cursor: pointer;
     }
 
-    .usecase-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .usecase-card {
-      border-radius: var(--radius-lg);
-      padding: 16px 16px 14px;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .usecase-label {
+    .hero-note {
       font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-note span {
       font-weight: 500;
-      color: var(--muted);
-      margin-bottom: 4px;
     }
 
-    .usecase-title {
-      font-size: 0.98rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--accent);
+    /* HERO – BOT-DEMO */
+
+    .hero-demo {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 32px;
+      padding: 1.2rem;
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.15);
+      border: 1px solid rgba(148, 163, 184, 0.25);
     }
 
-    .usecase-text {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .usecase-meta {
+    .demo-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.78rem;
-      color: var(--muted);
+      margin-bottom: 0.8rem;
     }
 
-    .usecase-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #16a34a;
-      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18);
+    .demo-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
     }
 
-    .usecase-link {
-      font-size: 0.78rem;
-      padding: 5px 10px;
+    .demo-logo {
+      width: 26px;
+      height: 26px;
       border-radius: 999px;
-      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-bottom: 0.1rem;
+    }
+
+    .demo-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .demo-caption {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .demo-pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #ecfdf5;
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .demo-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .demo-frame {
+      margin-top: 0.7rem;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: #f9fafb;
+      height: 420px;
+    }
+
+    .demo-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+    }
+
+    /* SECTION: CARDS */
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2.section-title {
+      font-size: 1.35rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 800px) {
+      .cards-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .card-chip {
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: #f4f4ff;
+      font-size: 0.72rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .pill-green {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: #ecfdf5;
+      font-size: 0.75rem;
+    }
+
+    .pill-green span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-green);
+    }
+
+    .link-btn {
+      border-radius: 999px;
+      padding: 0.5rem 0.95rem;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      background: white;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .card-toggle {
+      margin-top: 0.5rem;
+      text-align: right;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ONBOARDING + FORM */
+
+    .onboarding-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .onboarding-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .onboarding-box {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);
+      font-size: 0.9rem;
+    }
+
+    .onboarding-box h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .onboarding-list {
+      padding-left: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .onboarding-list li {
+      margin-bottom: 0.4rem;
+    }
+
+    .onboarding-box strong {
+      font-weight: 600;
+    }
+
+    .form-box {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);
+      font-size: 0.9rem;
+    }
+
+    .form-box h3 {
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 0.75rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.9rem;
+      outline: none;
       background: #f9fafb;
     }
 
-    /* KONTAKT */
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #111827;
+      background: white;
+    }
 
-    #kontakt {
-      margin-top: 46px;
+    textarea {
+      resize: vertical;
+      min-height: 72px;
+    }
+
+    .form-small {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .btn-form {
+      width: 100%;
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      border: none;
+      background: #111827;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 0.25rem;
     }
 
     /* FOOTER */
 
     footer {
-      border-top: 1px solid rgba(15, 23, 42, 0.06);
-      padding: 14px 16px 20px;
-      margin-top: 44px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      background: #ffffff;
-    }
-
-    .footer-inner {
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 1rem 1.5rem 1.8rem;
       max-width: 1120px;
       margin: 0 auto;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .footer-links {
-      display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
-    .footer-links a:hover {
-      opacity: 1;
+    footer a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    /* RESPONSIVE */
-
-    @media (max-width: 880px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-right {
-        order: -1;
-        margin-bottom: 10px;
-      }
-
-      header {
-        align-items: flex-start;
-      }
-
-      nav {
-        font-size: 0.8rem;
-        gap: 12px;
-      }
+    footer a:hover {
+      text-decoration: underline;
     }
 
-    @media (max-width: 640px) {
-      .shell {
-        padding: 18px 14px 40px;
-      }
-
-      .usecase-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    /* SMOOTH SCROLL */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
-
 <body>
-  <div class="page">
-    <main class="shell">
-      <!-- HEADER -->
-      <header>
-        <div class="brand">
-          <div class="brand-logo">
-            <img src="./lake.tech.png" alt="Lake.tech Logo">
-          </div>
-          <div class="brand-text">
-            <div class="brand-name">Lake.tech</div>
-            <div class="brand-tagline">Automatisierte Kommunikation. Mehr Zeit für Menschen.</div>
-          </div>
-        </div>
-
-        <nav>
-          <a href="#usecases" class="nav-link">Lösungen</a>
-          <a href="#demo" class="nav-link">Demo</a>
-          <a href="#kontakt" class="nav-cta">
-            <span class="nav-cta-dot"></span>
-            Kostenloses Erstgespräch
-          </a>
-        </nav>
-      </header>
-
-      <!-- HERO -->
-      <section class="hero" id="top">
-        <div class="hero-left">
-          <div class="hero-pill">
-            <span class="hero-pill-label">Demo</span>
-            <span>Individuelle KI-Assistenten für Praxen &amp; Apotheken</span>
-          </div>
-
-          <h1 class="hero-title">
-            <span class="accent">Digitale Assistenten</span><br />
-            die rund um die Uhr für Ihre Patienten da sind.
-          </h1>
-
-          <p class="hero-subtitle">
-            Lake.tech entwickelt <b>maßgeschneiderte KI-Bots</b>, die Routine-Anfragen beantworten,
-            Patienten vorqualifizieren und Ihr Team entlasten – <b>ohne</b> komplizierte Technik
-            auf Ihrer Seite.
-          </p>
-
-          <div class="hero-actions">
-            <button class="btn-primary" onclick="document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });">
-              <span class="icon">●</span> Live-Demo starten
-            </button>
-            <button class="btn-ghost" onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });">
-              15-Minuten-Beratung buchen
-            </button>
-          </div>
-
-          <div class="hero-meta">
-            <div class="hero-meta-item"><span class="dot"></span> Speziell für Praxen &amp; Apotheken</div>
-            <div class="hero-meta-item"><span class="dot"></span> DSGVO-konform in der EU gehostet</div>
-            <div class="hero-meta-item"><span class="dot"></span> Einbindung in Ihre bestehende Website</div>
-          </div>
-        </div>
-
-        <!-- ECHTER BOT IM IFRAME -->
-        <div class="hero-right" id="demo">
-          <div class="chat-demo-shell">
-            <div class="chat-demo-inner">
-              <!-- HIER die URL deines Bot-Deployments eintragen -->
-              <iframe
-                class="chat-frame"
-                src="https://laketechdemobot.vercel.app"
-                title="Lake.tech Demo-Bot"
-                scrolling="no"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- USE CASES -->
-      <section class="usecases" id="usecases">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">Direkt einsetzbar für Ihren Alltag</h2>
-            <p class="section-subtitle">
-              Lake.tech-Bots werden an Ihre Praxis oder Apotheke angepasst – Inhalte, Tonalität
-              und Prozesse sind komplett individualisierbar.
-            </p>
-          </div>
-          <div class="pill-outline">Praxibot &amp; Apobot</div>
-        </div>
-
-        <div class="usecase-grid">
-          <article class="usecase-card">
-            <div class="usecase-label">Für Praxen</div>
-            <h3 class="usecase-title">Praxibot – digitaler Praxisassistent</h3>
-            <p class="usecase-text">
-              Beantwortet wiederkehrende Fragen zu Öffnungszeiten, Leistungen oder
-              Rezeptbestellungen, nimmt Terminanfragen auf und entlastet Ihr Telefon –
-              besonders zu Stoßzeiten.
-            </p>
-            <div class="usecase-meta">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <span class="usecase-dot"></span> Ideal für Haus- &amp; Facharztpraxen
-              </div>
-              <a href="#kontakt" class="usecase-link">Praxibot kennenlernen</a>
-            </div>
-          </article>
-
-          <article class="usecase-card">
-            <div class="usecase-label">Für Apotheken</div>
-            <h3 class="usecase-title">Apobot – smarter Apotheken-Chat</h3>
-            <p class="usecase-text">
-              Unterstützt bei Fragen zur Verfügbarkeit, Reservierung und Öffnungszeiten,
-              ohne pharmazeutische Beratung zu ersetzen – mehr Service, weniger Warteschlangen.
-            </p>
-            <div class="usecase-meta">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <span class="usecase-dot"></span> Für moderne Vor-Ort-Apotheken
-              </div>
-              <a href="#kontakt" class="usecase-link">Apobot kennenlernen</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- KONTAKT -->
-      <section id="kontakt">
-        <div class="section-header" style="margin-bottom:14px;">
-          <div>
-            <h2 class="section-title">Unverbindliches Erstgespräch</h2>
-            <p class="section-subtitle">
-              In 15 Minuten klären wir, wie ein KI-Assistent für Ihre Praxis oder Apotheke aussehen kann.
-            </p>
-          </div>
-        </div>
-
-        <div
-          style="
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--border);
-            background: #ffffff;
-            padding: 18px 20px;
-            display: grid;
-            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-            gap: 20px;
-            box-shadow: var(--shadow-soft);
-          "
-        >
-          <div style="font-size:0.9rem;color:var(--muted);display:flex;flex-direction:column;gap:8px;">
-            <p><b style="color:var(--accent);">So läuft unser Onboarding ab:</b></p>
-            <ol style="padding-left:18px;display:flex;flex-direction:column;gap:4px;">
-              <li>Kurzes Kennenlernen Ihrer Praxis oder Apotheke</li>
-              <li>Welche Anfragen sollen Bots beantworten? Welche nicht?</li>
-              <li>Ton &amp; Sprache des Assistenten festlegen</li>
-              <li>Einbindung in Ihre Website &amp; Datenschutz klären</li>
-            </ol>
-            <p style="font-size:0.82rem;margin-top:4px;">
-              Im Anschluss erhalten Sie eine <b style="color:var(--accent);">individuelle Demo</b>,
-              die exakt auf Ihr Team und Ihre Patienten zugeschnitten ist.
-            </p>
-          </div>
-
-          <div
-            style="
-              border-radius: 18px;
-              border: 1px solid rgba(15,23,42,0.10);
-              padding: 14px 14px 12px;
-              background: #f9fafb;
-              display:flex;
-              flex-direction:column;
-              gap:8px;
-              font-size:0.82rem;
-            "
-          >
-            <div style="font-weight:600;margin-bottom:2px;color:var(--accent);">Kontaktanfrage (Demo)</div>
-
-            <form>
-              <div style="display:flex;flex-direction:column;gap:6px;">
-                <label>
-                  Praxis / Apotheke<br />
-                  <input
-                    type="text"
-                    name="company"
-                    placeholder="z.B. Hausarztpraxis Muster"
-                    style="
-                      width:100%;
-                      margin-top:3px;
-                      padding:6px 9px;
-                      border-radius:10px;
-                      border:1px solid rgba(15,23,42,0.16);
-                      background:#ffffff;
-                      font-size:0.8rem;
-                    "
-                  />
-                </label>
-
-                <label>
-                  E-Mail<br />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="name@praxis.de"
-                    style="
-                      width:100%;
-                      margin-top:3px;
-                      padding:6px 9px;
-                      border-radius:10px;
-                      border:1px solid rgba(15,23,42,0.16);
-                      background:#ffffff;
-                      font-size:0.8rem;
-                    "
-                  />
-                </label>
-
-                <label>
-                  Bevorzugtes Einsatzgebiet<br />
-                  <select
-                    name="usecase"
-                    style="
-                      width:100%;
-                      margin-top:3px;
-                      padding:6px 9px;
-                      border-radius:10px;
-                      border:1px solid rgba(15,23,42,0.16);
-                      background:#ffffff;
-                      font-size:0.8rem;
-                    "
-                  >
-                    <option value="">Bitte auswählen</option>
-                    <option value="praxis">Praxis – Termin &amp; Anfragen</option>
-                    <option value="apotheke">Apotheke – Service &amp; Verfügbarkeit</option>
-                    <option value="beides">Beides</option>
-                  </select>
-                </label>
-
-                <button
-                  type="button"
-                  style="
-                    margin-top:6px;
-                    padding:8px 12px;
-                    border-radius:999px;
-                    border:none;
-                    background:var(--accent);
-                    color:#ffffff;
-                    font-weight:600;
-                    cursor:not-allowed;
-                    font-size:0.8rem;
-                  "
-                >
-                  Anfrage absenden (Demo)
-                </button>
-
-                <p style="font-size:0.72rem;color:var(--muted);">
-                  Dieses Formular ist eine <b>statische Demo</b>. Wir richten die echte Version
-                  im Rahmen des Onboardings gemeinsam ein.
-                </p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-inner">
-        <div>© <span id="year"></span> Lake.tech. Alle Rechte vorbehalten.</div>
-        <div class="footer-links">
-          <a href="#">Impressum</a>
-          <a href="#">Datenschutz</a>
-          <a href="#top">Nach oben ↑</a>
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="logo-mark">L</div>
+        <div class="logo-text">
+          <strong>Lake.tech</strong>
+          <span>Automatisierte Kommunikation. Mehr Zeit für Menschen.</span>
         </div>
       </div>
-    </footer>
-  </div>
+      <div class="nav-links">
+        <a href="#loesungen">Lösungen</a>
+        <a href="#demo">Demo</a>
+        <button class="nav-cta" onclick="document.getElementById('erstgespraech').scrollIntoView()">
+          <span class="nav-cta-dot"></span>
+          Kostenloses Erstgespräch
+        </button>
+      </div>
+    </div>
+  </header>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="eyebrow-row">
+          <div class="pill pill-demo">
+            <span class="pill-dot"></span> Demo
+          </div>
+          <div class="pill">Individuelle KI-Assistenten für Praxen &amp; Apotheken</div>
+        </div>
+
+        <h1>
+          <span>Digitale Assistenten, die rund um die Uhr für Ihre Patienten da sind.</span>
+          Digitale Assistenten, die rund um die Uhr für Ihre Patienten da sind.
+        </h1>
+
+        <p class="hero-sub">
+          Lake.tech entwickelt <strong>maßgeschneiderte KI-Bots</strong>, die Routine-Anfragen beantworten,
+          Patienten vorqualifizieren und Ihr Team entlasten – ohne komplizierte Technik auf Ihrer Seite.
+        </p>
+
+        <div class="chips">
+          <div class="chip">Speziell für Praxen &amp; Apotheken</div>
+          <div class="chip">DSGVO-konform in der EU gehostet</div>
+          <div class="chip">Einbindung in Ihre bestehende Website</div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn-primary" onclick="document.getElementById('demo').scrollIntoView()">
+            ● Live-Demo starten
+          </button>
+          <button class="btn-secondary" onclick="document.getElementById('erstgespraech').scrollIntoView()">
+            15-Minuten-Beratung buchen
+          </button>
+        </div>
+        <p class="hero-note">
+          <span>Hinweis:</span> Diese Seite ist eine Demo. Jeder Bot wird später exakt auf Ihre Praxis oder Apotheke zugeschnitten.
+        </p>
+      </div>
+
+      <!-- HERO: BOT-DEMO -->
+      <div class="hero-demo" id="demo">
+        <div class="demo-header">
+          <div class="demo-header-left">
+            <div class="demo-logo">LT</div>
+            <div class="demo-title">Lake.tech Demo-Bot</div>
+            <div class="demo-caption">Testen Sie hier den KI-Assistenten live.</div>
+          </div>
+          <div class="demo-pill">
+            <span class="demo-pill-dot"></span>
+            Online
+          </div>
+        </div>
+        <div class="demo-frame">
+          <!-- WICHTIG: HIER WIRD DEIN VERCEL-BOT EINGEBETTET -->
+          <iframe
+            src="https://laketechdemobot.vercel.app"
+            title="Lake.tech Demo Bot"
+            allow="clipboard-write; microphone; autoplay"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- LÖSUNGEN -->
+    <section id="loesungen">
+      <h2 class="section-title">Direkt einsetzbar für Ihren Alltag</h2>
+      <p class="section-sub">
+        Lake.tech-Bots werden an Ihre Praxis oder Apotheke angepasst – Inhalte, Tonalität und Prozesse
+        sind komplett individualisierbar.
+      </p>
+
+      <div class="cards-row">
+        <!-- Karte Praxibot -->
+        <article class="card">
+          <div class="card-header">
+            <span class="card-chip">Für Praxen</span>
+          </div>
+          <h3>Praxibot – digitaler Praxisassistent</h3>
+          <p>
+            Beantwortet wiederkehrende Fragen zu Öffnungszeiten, Leistungen oder
+            Rezeptbestellungen, nimmt Terminanfragen auf und entlastet Ihr Telefon –
+            besonders zu Stoßzeiten.
+          </p>
+          <div class="card-footer">
+            <div class="pill-green">
+              <span class="dot"></span>
+              Ideal für Haus- &amp; Facharztpraxen
+            </div>
+            <button class="link-btn">Praxibot kennenlernen</button>
+          </div>
+        </article>
+
+        <!-- Karte Apobot -->
+        <article class="card">
+          <div class="card-header">
+            <span class="card-chip">Für Apotheken</span>
+          </div>
+          <h3>Apobot – smarter Apotheken-Chat</h3>
+          <p>
+            Unterstützt bei Fragen zur Verfügbarkeit, Reservierung und Öffnungszeiten,
+            ohne pharmazeutische Beratung zu ersetzen – mehr Service, weniger Warteschlangen.
+          </p>
+          <div class="card-footer">
+            <div class="pill-green">
+              <span class="dot"></span>
+              Für moderne Vor-Ort-Apotheken
+            </div>
+            <button class="link-btn">Apobot kennenlernen</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="card-toggle">
+        Praxibot &amp; Apobot lassen sich auch gemeinsam einsetzen.
+      </div>
+    </section>
+
+    <!-- ERSTGESPRÄCH & FORMULAR -->
+    <section id="erstgespraech">
+      <h2 class="section-title">Unverbindliches Erstgespräch</h2>
+      <p class="section-sub">
+        In 15 Minuten klären wir, wie ein KI-Assistent für Ihre Praxis oder Apotheke aussehen kann.
+      </p>
+
+      <div class="onboarding-grid">
+        <div class="onboarding-box">
+          <h3>So läuft unser Onboarding ab:</h3>
+          <ol class="onboarding-list">
+            <li>Kurzes Kennenlernen Ihrer Praxis oder Apotheke</li>
+            <li>Welche Anfragen sollen Bots beantworten? Welche nicht?</li>
+            <li>Ton &amp; Sprache des Assistenten festlegen</li>
+            <li>Einbindung in Ihre Website &amp; Datenschutz klären</li>
+          </ol>
+          <p>
+            Im Anschluss erhalten Sie eine <strong>individuelle Demo</strong>, die exakt auf Ihr Team
+            und Ihre Patienten zugeschnitten ist.
+          </p>
+        </div>
+
+        <form class="form-box">
+          <h3>Kontaktanfrage (Demo)</h3>
+
+          <div class="form-group">
+            <label for="praxis">Praxis / Apotheke</label>
+            <input id="praxis" type="text" placeholder="z.B. Hausarztpraxis Muster" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input id="email" type="email" placeholder="name@praxis.de" />
+          </div>
+
+          <div class="form-group">
+            <label for="einsatzgebiet">Bevorzugtes Einsatzgebiet</label>
+            <select id="einsatzgebiet">
+              <option>Bitte auswählen</option>
+              <option>Praxis – Telefon &amp; Website</option>
+              <option>Praxis – nur Website</option>
+              <option>Apotheke – Website &amp; Reservierungen</option>
+              <option>Sonstiges / noch offen</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="nachricht">Nachricht (optional)</label>
+            <textarea id="nachricht" placeholder="Kurz beschreiben, wobei der Bot helfen soll …"></textarea>
+          </div>
+
+          <button type="button" class="btn-form">
+            Anfrage absenden (Demo)
+          </button>
+          <p class="form-small">
+            Dieses Formular ist eine statische Demo. Wir richten die echte Version im Rahmen des Onboardings gemeinsam ein.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2025 Lake.tech. Alle Rechte vorbehalten.</div>
+    <div>
+      <a href="#">Impressum</a> ·
+      <a href="#">Datenschutz</a> ·
+      <a href="#top">Nach oben ↑</a>
+    </div>
+  </footer>
 </body>
 </html>
