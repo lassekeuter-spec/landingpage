@@ -57,34 +57,20 @@
       gap: 0.75rem;
     }
 
-    .logo-mark {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      background: var(--accent-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 700;
+    .logo-img {
+      height: 42px;
+      width: auto;
+      display: block;
     }
 
     .logo-text {
       display: flex;
       flex-direction: column;
-      font-size: 0.82rem;
-    }
-
-    .logo-text strong {
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
     }
 
     .logo-text span {
       color: var(--text-muted);
-      font-size: 0.76rem;
+      font-size: 0.8rem;
     }
 
     .nav-links {
@@ -305,10 +291,11 @@
 
     .bot-device {
       flex: 1;
-      border-radius: 20px;
+      border-radius: 22px;
       overflow: hidden;
-      background: #f3f4f6;
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: transparent;
+      border: none;
+      box-shadow: none;
     }
 
     .bot-device iframe {
@@ -555,9 +542,8 @@
   <header>
     <div class="nav">
       <div class="nav-left">
-        <div class="logo-mark">L</div>
+        <img src="lake.tech.png" alt="Lake.tech Logo" class="logo-img" />
         <div class="logo-text">
-          <strong>Lake.tech</strong>
           <span>Automatisierte Kommunikation. Mehr Zeit für Menschen.</span>
         </div>
       </div>
@@ -626,7 +612,7 @@
               </div>
             </div>
             <div class="bot-device">
-              <!-- HIER: ECHTER BOT VON VERCEL -->
+              <!-- ECHTER BOT VON VERCEL -->
               <iframe
                 src="https://laketechdemobot.vercel.app"
                 title="Lake.tech Demo Bot"
@@ -708,7 +694,7 @@
             <li>Einbindung in Ihre Website &amp; Datenschutz klären</li>
           </ol>
           <p>
-            Im Anschluss erhalten Sie eine <strong>individuelle Demo</strong>, die exakt auf Ihr Team
+            Im Anschluss erhalten Sie einen <strong>angepassten Bot</strong>, der exakt auf Ihr Team
             und Ihre Patienten zugeschnitten ist.
           </p>
         </div>
