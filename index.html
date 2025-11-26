@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lake.tech – Digitale Assistenten für Praxen & Apotheken</title>
+  <title>Lake.tech – Digitale Assistenten für Praxen & Praxen & Apotheken</title>
   <style>
     * {
       box-sizing: border-box;
@@ -232,77 +232,23 @@
       margin: 0 0.25rem;
     }
 
-    /* HERO – BOT CARD */
+    /* HERO – BOT EMBED */
 
     .hero-right {
       display: flex;
       justify-content: center;
     }
 
-    .bot-card {
+    /* Der Bot selbst (externer Vercel-Bot) – nur hier geändert */
+    .bot-embed {
       width: 100%;
       max-width: 360px;
-      background: #f9fafb;
-      border-radius: 32px;
-      padding: 1.1rem 1.1rem 1.2rem;
-      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.18);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      position: relative;
-    }
-
-    .bot-card-inner {
-      border-radius: 26px;
-      padding: 0.9rem;
-      background: #ffffff;
-      border: 1px solid rgba(148, 163, 184, 0.3);
       height: 430px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .bot-status-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-      font-size: 0.78rem;
-    }
-
-    .bot-name {
-      font-weight: 600;
-    }
-
-    .bot-status-pill {
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      background: #ecfdf5;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.74rem;
-    }
-
-    .bot-status-pill span.dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
-
-    .bot-device {
-      flex: 1;
-      border-radius: 22px;
+      border: none;
+      border-radius: 32px;
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.18);
+      background: transparent;
       overflow: hidden;
-      background: transparent;
-      border: none;
-      box-shadow: none;
-    }
-
-    .bot-device iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: transparent;
     }
 
     /* SECTIONS */
@@ -550,7 +496,7 @@
       <nav class="nav-links">
         <a href="#loesungen">Lösungen</a>
         <a href="#demo">Demo</a>
-        <button class="nav-cta" onclick="document.getElementById('erstgespraech').scrollIntoView()">
+        <button class="nav-cta" onclick="document.getElementById('erstgespräch').scrollIntoView()">
           <span class="nav-cta-dot"></span>
           Kostenloses Erstgespräch
         </button>
@@ -586,7 +532,7 @@
           <button class="btn-primary" onclick="document.getElementById('demo').scrollIntoView()">
             Live-Demo starten
           </button>
-          <button class="btn-secondary" onclick="document.getElementById('erstgespraech').scrollIntoView()">
+          <button class="btn-secondary" onclick="document.getElementById('erstgespräch').scrollIntoView()">
             15-Minuten-Beratung buchen
           </button>
         </div>
@@ -600,27 +546,14 @@
         </p>
       </div>
 
-      <!-- RECHTE SEITE: BOT IM "HANDY" -->
+      <!-- RECHTE SEITE: NUR NOCH DER FERTIGE BOT -->
       <div class="hero-right" id="demo">
-        <div class="bot-card">
-          <div class="bot-card-inner">
-            <div class="bot-status-row">
-              <div class="bot-name">Lake.tech Demo-Bot</div>
-              <div class="bot-status-pill">
-                <span class="dot"></span>
-                Online
-              </div>
-            </div>
-            <div class="bot-device">
-              <!-- ECHTER BOT VON VERCEL -->
-              <iframe
-                src="https://laketechdemobot.vercel.app"
-                title="Lake.tech Demo Bot"
-                allow="clipboard-write; microphone; autoplay"
-              ></iframe>
-            </div>
-          </div>
-        </div>
+        <iframe
+          src="https://laketechdemobot.vercel.app"
+          title="Lake.tech Demo Bot"
+          class="bot-embed"
+          allow="clipboard-write; microphone; autoplay"
+        ></iframe>
       </div>
     </section>
 
@@ -678,7 +611,7 @@
     </section>
 
     <!-- ERSTGESPRÄCH & FORMULAR -->
-    <section id="erstgespraech">
+    <section id="erstgespräch">
       <h2 class="section-title">Unverbindliches Erstgespräch</h2>
       <p class="section-sub">
         In 15 Minuten klären wir, wie ein KI-Assistent für Ihre Praxis oder Apotheke aussehen kann.
